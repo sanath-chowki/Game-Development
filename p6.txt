@@ -21,26 +21,26 @@ player_speed = 5
 # Game loop
 running = True
 while running:
-clock.tick(60)  # 60 FPS
-for event in pygame.event.get():
-if event.type == pygame.QUIT:
-running = False
-# Key handling
-keys = pygame.key.get_pressed()
-# Player 1 controls (WASD)
-if keys[pygame.K_w]: player1_pos[1] -= player_speed
-if keys[pygame.K_s]: player1_pos[1] += player_speed
-if keys[pygame.K_a]: player1_pos[0] -= player_speed
-if keys[pygame.K_d]: player1_pos[0] += player_speed
-# Player 2 controls (Arrow Keys)
-if keys[pygame.K_UP]: player2_pos[1] -= player_speed
-if keys[pygame.K_DOWN]: player2_pos[1] += player_speed
-if keys[pygame.K_LEFT]: player2_pos[0] -= player_speed
-if keys[pygame.K_RIGHT]: player2_pos[0] += player_speed
-# Drawing
-screen.fill(WHITE)
-pygame.draw.rect(screen, RED, (*player1_pos, player_size, player_size))
-pygame.draw.rect(screen, BLUE, (*player2_pos, player_size, player_size))
-pygame.display.flip()
+    clock.tick(60)  # 60 FPS
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    # Key handling
+    keys = pygame.key.get_pressed()
+    # Player 1 controls (WASD)
+    if keys[pygame.K_w]: player1_pos[1] -= player_speed
+    if keys[pygame.K_s]: player1_pos[1] += player_speed
+    if keys[pygame.K_a]: player1_pos[0] -= player_speed
+    if keys[pygame.K_d]: player1_pos[0] += player_speed
+    # Player 2 controls (Arrow Keys)
+    if keys[pygame.K_UP]: player2_pos[1] -= player_speed
+    if keys[pygame.K_DOWN]: player2_pos[1] += player_speed
+    if keys[pygame.K_LEFT]: player2_pos[0] -= player_speed
+    if keys[pygame.K_RIGHT]: player2_pos[0] += player_speed
+    # Drawing
+    screen.fill(WHITE)
+    pygame.draw.rect(screen, RED, (*player1_pos, player_size, player_size))
+    pygame.draw.rect(screen, BLUE, (*player2_pos, player_size, player_size))
+    pygame.display.flip()
 pygame.quit()
 sys.exit()
