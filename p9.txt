@@ -1,0 +1,52 @@
+Program 9:
+
+using UnityEngine;
+public class CoinCollect: MonoBehaviour
+{
+void OnTriggerEnter (Collider other)
+{
+if (other.CompareTag("Player"))
+{
+Debug.Log("Coin Collected!"); 
+Destroy(gameObject);
+}
+}
+}
+
+using UnityEngine;
+using UnityEngine.SceneManagement;
+public class Door: MonoBehaviour
+{
+void OnTriggerEnter (Collider other)
+{
+if (other.CompareTag("Player"))
+{
+// Hide the player 
+other.gameObject.SetActive(false);
+// Quit the game (only works in built .exe)
+Application.Quit();
+// For testing in the editor (optional)
+#if UNITY_EDITOR
+UnityEditor.EditorApplication.isPlaying = false;
+#endif
+}
+}
+}
+
+using UnityEngine;
+public class PlayerMovement: MonoBehaviour
+{
+public float speed = 5f;
+private Rigidbody rb;
+void Start()
+{
+rb = GetComponent<Rigidbody>();
+}
+void Update()
+{
+float moveX= Input.GetAxis("Horizontal");
+float moveZ = Input.GetAxis ("Vertical");
+Vector3 move = new Vector3 (moveX, 0f, moveZ);
+rb.MovePosition(transform.position+move speed Time.deltaTime);
+}
+}
