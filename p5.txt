@@ -15,21 +15,21 @@ box_speed=5
 clock=pygame.time.Clock()
 running=True
 while running:
-clock.tick(60)
-for event in pygame.event.get():
-if event.type==pygame.QUIT:
-running=False
-keys=pygame.key.get_pressed()
-if keys[pygame.K_LEFT]:
-box_pos[0]-=box_speed
-if keys[pygame.K_RIGHT]:
-box_pos[0]-=box_speed
-if keys[pygame.K_UP]:
-box_pos[1]-=box_speed
-if keys[pygame.K_DOWN]:
-box_pos[1]-=box_speed
-screen.fill(WHITE)
-pygame.draw.rect(screen,BLUE,(*box_pos,box_size,box_size))
-pygame.display.flip()
+    clock.tick(60)
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+           running=False
+    keys=pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+           box_pos[0]-=box_speed
+    if keys[pygame.K_RIGHT]:
+           box_pos[0]-=box_speed
+    if keys[pygame.K_UP]:
+           box_pos[1]-=box_speed
+    if keys[pygame.K_DOWN]:
+           box_pos[1]-=box_speed
+    screen.fill(WHITE)
+    pygame.draw.rect(screen,BLUE,(*box_pos,box_size,box_size))
+    pygame.display.flip()
 pygame.quit()
 sys.exit()
