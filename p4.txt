@@ -1,0 +1,27 @@
+Program 4:
+
+using UnityEngine; 
+public class PlayerController : MonoBehaviour 
+{ 
+public float moveSpeed = 5f; 
+public float turnSpeed = 700f; 
+private Rigidbody rb; 
+void Start() 
+{ 
+rb = GetComponent<Rigidbody>(); 
+} 
+void Update() 
+{ 
+// Movement 
+float moveHorizontal = Input.GetAxis("Horizontal");         
+float moveVertical = Input.GetAxis("Vertical"); 
+Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical) * moveSpeed * Time.deltaTime; 
+rb.MovePosition(transform.position + movement); 
+// Turning 
+if (movement.magnitude > 0) 
+{ 
+Quaternion targetRotation = Quaternion.LookRotation(movement); 
+transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime); 
+} 
+} 
+}
