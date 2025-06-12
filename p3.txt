@@ -1,0 +1,54 @@
+Program 3:
+
+using UnityEngine;
+public class CoinCollect: MonoBehaviour
+{
+void OnTriggerEnter2D(Collider2D other)
+{
+if (other.CompareTag("Player"))
+{
+Destroy(gameObject); // Removes coin
+}
+}
+}
+
+using UnityEngine;
+public class Door : MonoBehaviour 
+{
+public GameObject Player;
+void OnTriggerEnter2D(Collider2D other)
+{
+if(other.CompareTag("Player"))
+{
+Player.SetActive(false);
+}
+}
+void OnTriggerExit2D(Collider2D other)
+{
+if (other.CompareTag("Player"))
+{
+Player.SetActive(false);
+}
+}
+}
+
+using UnityEngine;
+public class PlayerMovement : MonoBehaviour
+{
+public float moveSpeed = 5f;
+private Rigidbody2D rb;
+private Vector2 moveInput;
+void Start()
+{
+rb = GetComponent<Rigidbody2D>();
+}
+void Update()
+{
+  moveInput.x = Input.GetAxis("Horizontal");
+  moveInput.y = Input.GetAxis("Vertical");
+}
+void FixedUpdate()
+{
+  rb.linearVelocity= moveInput*moveSpeed; OR rb.velocity
+}
+}
